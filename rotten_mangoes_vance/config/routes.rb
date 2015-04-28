@@ -1,4 +1,13 @@
 RottenMangoesVance::Application.routes.draw do
+
+  get "movies/index"
+  get "movies/show"
+  get "movies/new"
+  get "movies/edit"
+  resources :movies
+  root to: 'movies#index'
+
+end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -53,4 +62,4 @@ RottenMangoesVance::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
+
