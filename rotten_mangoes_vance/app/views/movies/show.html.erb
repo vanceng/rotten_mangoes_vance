@@ -5,6 +5,7 @@
 <h3><%= formatted_date(@movie.release_date) %></h3>
 <h4>Dir. <%= @movie.director %> | <%= @movie.runtime_in_minutes %> minutes</h4>
 <p><%= @movie.description %></p>
+<%= image_tag @movie.poster.to_s %>
 <hr>
 
 <h3>Reviews of <em><%= @movie.title %></em></h3>
