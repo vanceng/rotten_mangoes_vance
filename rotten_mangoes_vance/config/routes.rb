@@ -1,5 +1,9 @@
 RottenMangoesVance::Application.routes.draw do
 
+  get "admin/index"
+  get "admin/show"
+  get "admin/new"
+  get "admin/edit"
   get "reviews/new"
   get "reviews/create"
   get "sessions/new"
@@ -10,12 +14,19 @@ RottenMangoesVance::Application.routes.draw do
   get "movies/show"
   get "movies/new"
   get "movies/edit"
+
   resources :movies do
     resources :reviews, only: [:new, :create]
   end 
 
+  namespace :admin do
+    resources :users
+  end
+
   resources :users, only: [:new, :create]
+
   resources :sessions, only: [:new, :create, :destroy]
+
   root to: 'movies#index'
 
 end

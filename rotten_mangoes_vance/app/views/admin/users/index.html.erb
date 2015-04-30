@@ -1,0 +1,23 @@
+<h1><%= link_to "Rotten Mangoes", movies_index_path %></h1>
+<h2>Welcome to the Admin Dashboard</h2>
+<hr>
+<h2>Here is a list of all the Admins</h2>
+<%= paginate @admins %>
+<% @admins.each do |admin| %>
+  <h4>Full Name: <%= admin.full_name %></h4>
+  <h4>Email: <%= admin.email %> </h4>
+  <h4>Admin?: <%= admin.admin %> </h4>
+  <h4>Created at: <%= admin.created_at %> </h4>
+<% end %>
+
+<hr>
+
+<h2>Here is a list of all the Users</h4>
+<%= paginate @users %>
+<% @users.each do |user| %>
+  <h4>Full Name: <%= user.full_name %> </h4>
+  <h4>Email: <%= user.email %> </h4>
+  <h4>Admin?: <%= user.admin %> </h4>
+  <h4>Created at: <%= user.created_at %> </h4>
+
+<% end %>

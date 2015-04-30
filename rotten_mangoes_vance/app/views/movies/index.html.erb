@@ -1,14 +1,16 @@
 <h1><%= link_to "Rotten Mangoes", movies_index_path %></h1>
 <%= link_to "Submit a movie!", movies_new_path %>
+
 <hr>
+<%= paginate @movies %>
 <% @movies.each do |movie| %>
-  <%= image_tag movie.poster.to_s %>
   <h2><%= link_to movie.title, movie_path(movie) %></h2>
   <h3><%= formatted_date(movie.release_date) %></h3>
   <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
   <p><%= movie.description %></p>
   <%= image_tag movie.poster.to_s %>
   <p><%=  (movie.review_average) %>/10</p>
+<%end%>
 
-  <hr>
-<% end %>
+<hr>
+
