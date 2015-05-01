@@ -1,6 +1,6 @@
 <h1>Edit this User</h1>
 
-<%= form_for [:user, @user] do |f| %>
+<%= form_for :user, url: user_path, method: :put do |f| %>
 
   <div>
     <%= f.label "email" %><br>

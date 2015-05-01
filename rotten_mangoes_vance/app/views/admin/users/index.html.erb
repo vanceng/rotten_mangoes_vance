@@ -1,4 +1,6 @@
-<h1><%= link_to "Rotten Mangoes", movies_index_path %></h1>
+
+
+<h1><%= link_to "Rotten Mangoes", root_path %></h1>
 <h2>Welcome to the Admin Dashboard</h2>
 <hr>
 <h2>Here is a list of all the Admins</h2>
@@ -13,11 +15,13 @@
 <hr>
 
 <h2>Here is a list of all the Users</h4>
-<%= paginate @users %>
-<% @users.each do |user| %>
+<%= paginate @users_list %>
+<% @users_list.each do |user| %>
   <h4>Full Name: <%= user.full_name %> </h4>
   <h4>Email: <%= user.email %> </h4>
   <h4>Admin?: <%= user.admin %> </h4>
-  <h4>Created at: <%= user.created_at %> </h4>
-
+  <h4>Created at: <%= user.created_at %> </h4> 
+  <% @edit_user = user %>
+  <%= link_to 'Edit', user_path(@edit_user) %>
+  <%= link_to "Delete", user_path(@edit_user), method: :delete, confirm: "You sure?" %>
 <% end %>
