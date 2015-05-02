@@ -2,7 +2,26 @@
 <%= link_to "Submit a movie!", new_movie_path %>
 
 <hr>
-<%= paginate @movies %>
+
+<%= form_tag("/movies", method: "get") do %>
+  <%= label_tag(:movie_search, "Title:") %>
+  <%= text_field_tag(:movie_search) %>
+
+  <div>
+    <select name="runtime_in_minutes" id="runtime_in_minutes"><br>
+      <option value="short">Under 90 minutes</option>
+      <option value="medium">Between 90 and 120 minutes</option>
+      <option value="long">Over 120 minutes</option>
+    </select>
+  </div>
+
+  <%= submit_tag("Search") %>
+
+<% end %>
+
+
+<hr>
+
 <% @movies.each do |movie| %>
   <h2><%= link_to movie.title, movie_path(movie) %></h2>
   <h3><%= formatted_date(movie.release_date) %></h3>

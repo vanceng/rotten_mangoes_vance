@@ -1,11 +1,29 @@
 class MoviesController < ApplicationController
   
   def index
-    @movies = Movie.all.page(params[:page]).per(1)
-  end
+    search = params[:movie_search]
+    runtime = params[:runtime_in_minutes]
+    
+    if search 
+      case runtime 
+      when "short"
+        @movies = Movie.where("title OR director like ? AND runtime_in_minutes < 90", search)
+        binding.pry 
+      when "medium"
+        @movies = Movie.where("title OR director like ? AND runtime_in_minutes BETWEEN 90 AND 120", search)
+      when "long" 
+        @movies = Movie.where("title OR director like ? AND runtime_in_minutes > 120", search)
+      else 
+        raise "unknown runtime" 
+      end 
+      flash[:success] = "Search complete"
+    else
+      @movies = Movie.all 
+    end 
+  end 
 
 
-  def show
+  def show 
     @movie = Movie.find(params[:id])
   end
 
